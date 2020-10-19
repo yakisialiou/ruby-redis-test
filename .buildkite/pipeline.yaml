@@ -1,7 +1,7 @@
   - label: "Automated Tests"
     plugins:
        - docker-compose#v3.7.0:
-          config: .buildkite/docker-compose.yml
+          config: .buildkite/docker-compose.yaml
           run: app_read
           environment:
             - SSH_AUTH_SOCK=/ssh-agent.sock
