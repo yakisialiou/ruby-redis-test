@@ -5,6 +5,7 @@
           run: app_read
           environment:
             - SSH_AUTH_SOCK=/ssh-agent.sock
+            - REDIS_VALUE=mytestvalue115
           volumes:
             - /run/host-services/ssh-auth.sock:/ssh-agent.sock
             - /var/lib/buildkite-agent/.ssh/known_hosts:/root/.ssh/known_hosts
