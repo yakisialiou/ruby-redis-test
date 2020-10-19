@@ -1,0 +1,30 @@
+version: '3'
+services:
+  redis:
+    image: redis
+  app_write:
+    image: ruby:2.6
+    working_dir: /testapp
+    volumes:
+      - ../:/testapp
+    environment:
+      REDIS_LOCATION: redis
+      REDIS_KEY: testkey111
+      REDIS_VALUE: mytestvalue115
+      SCRIPT_MODE: write
+    depends_on:
+      - redis
+    command: ["sh", "/testapp/.buildkite/redis_write.sh"]
+  app_read:
+    image: ruby:2.6
+    working_dir: /testapp
+    volumes:
+      - ../:/testapp
+    environment:
+      REDIS_KEY: testkey111
+      REDIS_VALUE: mytestvalue111      
+      REDIS_LOCATION: redis
+      SCRIPT_MODE: read
+    depends_on:
+      - redis
+      - app_write

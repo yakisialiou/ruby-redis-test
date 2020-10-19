@@ -1,0 +1,12 @@
+  - label: "Automated Tests"
+    plugins:
+       - docker-compose#v3.7.0:
+          config: .buildkite/docker-compose.yml
+          environment:
+            - SSH_AUTH_SOCK=/ssh-agent.sock
+          volumes:
+            - /run/host-services/ssh-auth.sock:/ssh-agent.sock
+            - /var/lib/buildkite-agent/.ssh/known_hosts:/root/.ssh/known_hosts
+    agents:
+      queue: ykisialiou-dev
+    command: .buildkite/redis_test.sh
