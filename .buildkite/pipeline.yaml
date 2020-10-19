@@ -2,6 +2,7 @@
     plugins:
        - docker-compose#v3.7.0:
           config: .buildkite/docker-compose.yml
+          run: app_read
           environment:
             - SSH_AUTH_SOCK=/ssh-agent.sock
           volumes:
