@@ -3,7 +3,7 @@ services:
   redis:
     image: redis
   app_write:
-    image: ruby:2.6
+    image: 414402341205.dkr.ecr.us-east-1.amazonaws.com/assurance-ruby:2.6.6
     working_dir: /testapp
     volumes:
       - ../:/testapp
@@ -16,7 +16,7 @@ services:
       - redis
     command: ["sh", "/testapp/.buildkite/redis_write.sh"]
   app_read:
-    image: ruby:2.6
+    image: 414402341205.dkr.ecr.us-east-1.amazonaws.com/assurance-ruby:2.6.6 
     working_dir: /testapp
     volumes:
       - ../:/testapp
